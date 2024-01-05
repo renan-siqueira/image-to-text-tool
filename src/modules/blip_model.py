@@ -19,13 +19,15 @@ from transformers import BlipProcessor, BlipForConditionalGeneration
 def load_model():
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-large")
-    model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-large").to(device)
+    model = BlipForConditionalGeneration.from_pretrained(
+        "Salesforce/blip-image-captioning-large"
+    ).to(device)
     return model, processor, device
 
 
-def describe_image(model, processor, device, image_path):
+def describe_image(model, processor, device, image_path, max_tokens=50):
     with Image.open(image_path) as img:
         image = img.convert('RGB')
         inputs = processor(image, return_tensors="pt").to(device)
-        outputs = model.generate(**inputs)
+        outputs = model.generate(**inputs, max_new_tokens=max_tokens)
         return processor.decode(outputs[0], skip_special_tokens=True)
