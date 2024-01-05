@@ -24,4 +24,5 @@ torchvision==0.18.0.dev20240105+cu121
 tqdm==4.66.1
 transformers==4.36.2
 typing_extensions==4.8.0
+uform==1.0.3
 urllib3==1.26.13
