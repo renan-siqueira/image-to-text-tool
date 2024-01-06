@@ -2,11 +2,11 @@
 
 # Creating virtual environment
 echo "Creating virtual environment..."
-python3 -m venv venv
+python3 -m venv .venv
 
 # Activating virtual environment
 echo "Activating virtual environment..."
-source venv/bin/activate
+source .venv/bin/activate
 
 # Installing dependencies
 echo "Installing dependencies from requirements.txt..."
