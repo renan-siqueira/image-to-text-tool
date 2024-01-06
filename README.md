@@ -46,6 +46,41 @@ Similar to the Unix script, this will set up the Python virtual environment and 
 
 ---
 
+### Docker Setup
+
+Alternatively, you can use Docker to set up the environment:
+
+1. Ensure Docker is installed on your system.
+2. Build the Docker image:
+
+```bash
+docker build -t image-to-text-tool .
+```
+
+3. To run the Docker container with the project's root directory mapped as a volume, use the following command. This allows you to have the input folder and other necessary files within the container.
+
+- For Unix-based Systems:
+
+```bash
+docker run -it --gpus all -v $(pwd):/usr/src/app image-to-text-tool
+```
+
+- For Windows Systems (Command Prompt):
+
+```bash
+docker run -it --gpus all -v %cd%:/usr/src/app image-to-text-tool
+```
+
+- For Windows Systems (PowerShell):
+
+```bash
+docker run -it --gpus all -v ${PWD}:/usr/src/app image-to-text-tool
+```
+
+This approach uses the NVIDIA CUDA base image and sets up the environment with GPU support, while also allowing you to work directly with your project files.
+
+---
+
 ## Usage
 
 After installing the dependencies and setting up the environment, you can use the tool as follows:
