@@ -15,5 +15,8 @@ pip install --pre torch torchvision torchaudio --index-url https://download.pyto
 echo Creating 'input' folder...
 if not exist "input" mkdir input
 
+echo Creating 'json' folder...
+if not exist "json" mkdir json
+
 echo Installation completed.
 pause
